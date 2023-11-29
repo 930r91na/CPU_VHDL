@@ -1,0 +1,1155 @@
+Analysis & Synthesis report for CPUImplementation
+Thu Nov  9 11:47:58 2023
+Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |CPUImplementation|CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|current_state
+  9. User-Specified and Inferred Latches
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Post-Synthesis Netlist Statistics for Top Partition
+ 14. Elapsed Time Per Partition
+ 15. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2023  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                        ;
++------------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu Nov  9 11:47:58 2023          ;
+; Quartus Prime Version              ; 22.1std.1 Build 917 02/14/2023 SC Lite Edition ;
+; Revision Name                      ; CPUImplementation                              ;
+; Top-level Entity Name              ; CPUImplementation                              ;
+; Family                             ; MAX 10                                         ;
+; Total logic elements               ; 3,301                                          ;
+;     Total combinational functions  ; 1,645                                          ;
+;     Dedicated logic registers      ; 1,710                                          ;
+; Total registers                    ; 1710                                           ;
+; Total pins                         ; 258                                            ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 0                                              ;
+; Embedded Multiplier 9-bit elements ; 0                                              ;
+; Total PLLs                         ; 0                                              ;
+; UFM blocks                         ; 0                                              ;
+; ADC blocks                         ; 0                                              ;
++------------------------------------+------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; 10M08DAF484C8G     ;                    ;
+; Top-level entity name                                            ; CPUImplementation  ; CPUImplementation  ;
+; Family name                                                      ; MAX 10             ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.1%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                   ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                            ; Library ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------------+---------+
+; CPUImplementation.vhd            ; yes             ; User VHDL File  ; C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd ;         ;
+; Memory.vhd                       ; yes             ; User VHDL File  ; C:/Users/koqui/Documents/VHDL/CPU/Memory.vhd            ;         ;
+; Mem_ROM.vhd                      ; yes             ; User VHDL File  ; C:/Users/koqui/Documents/VHDL/CPU/Mem_ROM.vhd           ;         ;
+; Mem_RW.vhd                       ; yes             ; User VHDL File  ; C:/Users/koqui/Documents/VHDL/CPU/Mem_RW.vhd            ;         ;
+; Output_Ports.vhd                 ; yes             ; User VHDL File  ; C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd      ;         ;
+; ALU.vhd                          ; yes             ; User VHDL File  ; C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd               ;         ;
+; DataPath.vhd                     ; yes             ; User VHDL File  ; C:/Users/koqui/Documents/VHDL/CPU/DataPath.vhd          ;         ;
+; CPU.vhd                          ; yes             ; User VHDL File  ; C:/Users/koqui/Documents/VHDL/CPU/CPU.vhd               ;         ;
+; ControlUnit.vhd                  ; yes             ; User VHDL File  ; C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd       ;         ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 3,301     ;
+;                                             ;           ;
+; Total combinational functions               ; 1645      ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 1215      ;
+;     -- 3 input functions                    ; 405       ;
+;     -- <=2 input functions                  ; 25        ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 1631      ;
+;     -- arithmetic mode                      ; 14        ;
+;                                             ;           ;
+; Total registers                             ; 1710      ;
+;     -- Dedicated logic registers            ; 1710      ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 258       ;
+;                                             ;           ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 1710      ;
+; Total fan-out                               ; 11727     ;
+; Average fan-out                             ; 3.03      ;
++---------------------------------------------+-----------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                ;
++------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------------------------------+-------------------+--------------+
+; Compilation Hierarchy Node               ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                             ; Entity Name       ; Library Name ;
++------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------------------------------+-------------------+--------------+
+; |CPUImplementation                       ; 1645 (0)            ; 1710 (0)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 258  ; 0            ; 0          ; |CPUImplementation                                                              ; CPUImplementation ; work         ;
+;    |CPU:CPU_Instance|                    ; 186 (0)             ; 71 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |CPUImplementation|CPU:CPU_Instance                                             ; CPU               ; work         ;
+;       |ControlUnit:ControlUnit_Instance| ; 56 (56)             ; 31 (31)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |CPUImplementation|CPU:CPU_Instance|ControlUnit:ControlUnit_Instance            ; ControlUnit       ; work         ;
+;       |DataPath:DataPath_Instance|       ; 130 (122)           ; 40 (40)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |CPUImplementation|CPU:CPU_Instance|DataPath:DataPath_Instance                  ; DataPath          ; work         ;
+;          |ALU:ALU_Instance|              ; 8 (8)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |CPUImplementation|CPU:CPU_Instance|DataPath:DataPath_Instance|ALU:ALU_Instance ; ALU               ; work         ;
+;    |Memory:Memory_Instance|              ; 1459 (11)           ; 1639 (0)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |CPUImplementation|Memory:Memory_Instance                                       ; Memory            ; work         ;
+;       |Mem_ROM:ROM_Instance|             ; 10 (10)             ; 7 (7)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |CPUImplementation|Memory:Memory_Instance|Mem_ROM:ROM_Instance                  ; Mem_ROM           ; work         ;
+;       |Mem_RW:RW_Instance|               ; 1420 (1420)         ; 1552 (1552)               ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |CPUImplementation|Memory:Memory_Instance|Mem_RW:RW_Instance                    ; Mem_RW            ; work         ;
+;       |Output_Ports:OUT_PORTS_Instance|  ; 18 (18)             ; 80 (80)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |CPUImplementation|Memory:Memory_Instance|Output_Ports:OUT_PORTS_Instance       ; Output_Ports      ; work         ;
++------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------------------------------+-------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |CPUImplementation|CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|current_state                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ;
++---------------------------+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+--------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+--------------------------+-------------------------+-------------------------+-------------------------+
+; Name                      ; current_state.S_BEQ_7 ; current_state.S_BEQ_6 ; current_state.S_BEQ_5 ; current_state.S_BEQ_4 ; current_state.S_BRA_6 ; current_state.S_BRA_5 ; current_state.S_BRA_4 ; current_state.S_ADD_AB_4 ; current_state.S_STB_DIR_7 ; current_state.S_STB_DIR_6 ; current_state.S_STB_DIR_5 ; current_state.S_STB_DIR_4 ; current_state.S_STA_DIR_7 ; current_state.S_STA_DIR_6 ; current_state.S_STA_DIR_5 ; current_state.S_STA_DIR_4 ; current_state.S_LDB_DIR_8 ; current_state.S_LDB_DIR_7 ; current_state.S_LDB_DIR_6 ; current_state.S_LDB_DIR_5 ; current_state.S_LDB_DIR_4 ; current_state.S_LDB_IMM_6 ; current_state.S_LDB_IMM_5 ; current_state.S_LDB_IMM_4 ; current_state.S_LDA_DIR_8 ; current_state.S_LDA_DIR_7 ; current_state.S_LDA_DIR_6 ; current_state.S_LDA_DIR_5 ; current_state.S_LDA_DIR_4 ; current_state.S_LDA_IMM_6 ; current_state.S_LDA_IMM_5 ; current_state.S_LDA_IMM_4 ; current_state.S_DECODE_3 ; current_state.S_FETCH_2 ; current_state.S_FETCH_1 ; current_state.S_FETCH_0 ;
++---------------------------+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+--------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+--------------------------+-------------------------+-------------------------+-------------------------+
+; current_state.S_FETCH_0   ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 0                       ;
+; current_state.S_FETCH_1   ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 1                       ; 1                       ;
+; current_state.S_FETCH_2   ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 1                       ; 0                       ; 1                       ;
+; current_state.S_DECODE_3  ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_LDA_IMM_4 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_LDA_IMM_5 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_LDA_IMM_6 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_LDA_DIR_4 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_LDA_DIR_5 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_LDA_DIR_6 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_LDA_DIR_7 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_LDA_DIR_8 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_LDB_IMM_4 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_LDB_IMM_5 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_LDB_IMM_6 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_LDB_DIR_4 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_LDB_DIR_5 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_LDB_DIR_6 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_LDB_DIR_7 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_LDB_DIR_8 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_STA_DIR_4 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_STA_DIR_5 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_STA_DIR_6 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_STA_DIR_7 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_STB_DIR_4 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_STB_DIR_5 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_STB_DIR_6 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_STB_DIR_7 ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_ADD_AB_4  ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 1                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_BRA_4     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 1                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_BRA_5     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 1                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_BRA_6     ; 0                     ; 0                     ; 0                     ; 0                     ; 1                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_BEQ_4     ; 0                     ; 0                     ; 0                     ; 1                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_BEQ_5     ; 0                     ; 0                     ; 1                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_BEQ_6     ; 0                     ; 1                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
+; current_state.S_BEQ_7     ; 1                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                     ; 0                        ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ;
++---------------------------+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+--------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+--------------------------+-------------------------+-------------------------+-------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                                                  ;
++---------------------------------------------------------------+-------------------------------------------------------------+------------------------+
+; Latch Name                                                    ; Latch Enable Signal                                         ; Free of Timing Hazards ;
++---------------------------------------------------------------+-------------------------------------------------------------+------------------------+
+; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|Bus1_Sel[0] ; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|Selector4 ; yes                    ;
+; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|iwrite      ; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|Selector4 ; yes                    ;
+; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|Bus2_Sel[1] ; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|Selector4 ; yes                    ;
+; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|Bus2_Sel[0] ; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|Selector4 ; yes                    ;
+; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|PC_Load     ; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|Selector4 ; yes                    ;
+; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|PC_Inc      ; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|Selector4 ; yes                    ;
+; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|A_Load      ; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|Selector4 ; yes                    ;
+; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|MAR_Load    ; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|Selector4 ; yes                    ;
+; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|B_Load      ; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|Selector4 ; yes                    ;
+; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|IR_Load     ; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|Selector4 ; yes                    ;
+; Number of user-specified and inferred latches = 10            ;                                                             ;                        ;
++---------------------------------------------------------------+-------------------------------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                       ;
++----------------------------------------------------------------------------+---------------------------------------------+
+; Register name                                                              ; Reason for Removal                          ;
++----------------------------------------------------------------------------+---------------------------------------------+
+; Memory:Memory_Instance|Mem_ROM:ROM_Instance|data_out[0]                    ; Stuck at GND due to stuck port data_in      ;
+; CPU:CPU_Instance|DataPath:DataPath_Instance|CCR_Result[2]                  ; Stuck at GND due to stuck port clock_enable ;
+; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|current_state.S_ADD_AB_4 ; Lost fanout                                 ;
+; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|current_state.S_BEQ_7    ; Lost fanout                                 ;
+; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|current_state.S_BEQ_4    ; Lost fanout                                 ;
+; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|current_state.S_BEQ_5    ; Lost fanout                                 ;
+; CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|current_state.S_BEQ_6    ; Lost fanout                                 ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~857                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~601                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~89                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~985                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2009                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~865                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~609                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~993                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~225                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2017                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~849                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1873                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~721                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~209                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~81                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~465                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2001                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~873                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~361                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~233                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~105                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~489                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2025                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~833                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~577                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~193                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1857                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1985                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~953                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~441                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~817                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~305                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1841                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~689                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~561                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~49                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~433                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1969                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~841                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~281                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~537                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~25                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~409                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~801                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~673                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~161                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~401                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~145                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~913                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~657                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1833                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1961                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~385                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2049                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~121                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2041                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~753                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~113                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~905                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~649                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~265                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~137                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~521                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~447                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~439                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~839                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~823                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~847                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~311                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~959                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~583                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~567                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~199                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~55                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~695                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1863                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1847                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1991                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1975                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~471                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~495                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~231                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~215                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~239                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~871                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~863                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~855                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~879                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~615                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~607                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1879                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~367                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~95                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~87                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~111                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~999                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~991                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~727                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2015                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2023                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2007                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2031                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~807                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~543                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1839                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~415                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~407                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~167                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~151                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~287                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~31                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~919                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~679                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~663                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1967                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~527                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~911                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~391                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~655                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~271                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~127                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~119                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~143                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~759                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2047                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2055                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~870                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~838                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~806                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~390                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~998                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~614                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~582                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~198                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~230                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~166                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~678                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1862                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2022                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1990                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2054                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~414                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~446                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~862                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~606                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~542                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~286                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~126                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~94                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~30                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~990                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~958                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2014                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2046                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~822                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~854                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~566                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1878                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1846                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~438                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~470                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~406                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~214                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~150                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~310                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~54                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~86                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~118                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~918                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~694                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~726                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~662                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~758                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2006                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1974                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~878                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~494                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~366                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~846                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~526                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~910                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~238                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~110                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~270                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~654                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~142                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1966                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1838                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2030                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~864                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~608                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~96                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~992                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2016                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~960                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~448                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~288                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~544                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~32                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~416                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~128                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2048                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~200                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~232                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~168                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~840                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~872                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~808                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~584                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~616                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1864                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~392                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1000                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~680                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2024                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1992                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2056                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~856                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~824                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~440                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~472                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~408                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~312                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~920                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~568                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~216                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~152                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~56                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~88                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~120                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~728                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~696                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~664                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~760                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1880                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1848                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2008                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1976                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~496                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~528                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~880                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~848                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~912                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~368                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~656                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~240                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~272                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~112                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~144                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1840                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2032                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1968                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~869                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~861                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~853                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~877                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~613                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~605                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1877                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~469                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~493                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~229                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~213                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~237                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~365                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~93                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~85                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~109                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~997                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2021                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~989                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2013                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~725                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2005                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2029                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~445                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~437                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~837                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~821                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~845                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~309                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~957                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~197                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~581                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~565                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~53                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~693                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1861                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1845                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1989                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1973                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~805                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~541                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1837                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~413                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~405                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~165                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~149                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~285                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~29                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~917                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~677                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~661                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1965                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~525                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~909                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~389                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~757                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~141                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~125                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~269                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~117                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~653                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2053                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2045                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~835                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~819                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~843                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~443                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~435                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~307                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~955                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~195                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~579                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~563                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~51                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~691                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1971                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1859                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1843                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1987                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~227                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~467                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~211                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~491                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~235                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~867                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~611                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~859                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~603                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~851                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1875                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~875                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~91                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~83                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~363                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~107                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~995                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2019                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~987                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2011                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~723                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2003                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2027                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~803                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~539                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1835                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~411                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~403                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~163                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~147                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~283                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~27                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~915                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~675                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~659                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1963                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~387                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~907                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~523                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~123                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~115                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~755                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~651                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~267                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~139                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2043                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2051                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~444                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~412                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~860                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~604                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~540                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~92                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~284                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~28                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~124                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~988                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~956                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2012                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2044                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~868                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~804                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~996                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~388                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~836                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~676                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~196                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~164                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~612                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~580                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~228                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2020                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1988                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1860                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2052                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~468                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~212                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~404                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~148                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~436                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~852                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1876                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~564                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1844                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~820                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~308                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~52                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~84                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~116                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~916                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2004                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~756                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~692                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~724                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~660                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1972                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~876                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~492                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~364                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~844                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~524                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~908                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~236                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~108                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~268                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~652                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~140                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2028                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1836                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1964                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~866                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~834                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~802                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~386                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~994                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~610                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~578                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~194                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~226                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~162                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~674                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1858                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1986                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2018                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2050                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~442                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~410                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~858                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~602                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~538                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~90                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~282                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~26                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~122                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~954                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~986                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2010                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2042                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~818                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~850                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~562                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1874                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1842                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~434                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~466                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~402                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~210                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~146                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~306                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~50                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~82                            ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~114                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~914                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~690                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~722                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~658                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~754                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2002                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1970                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~842                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~490                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~874                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~362                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~906                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~522                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~234                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~106                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~650                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~266                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~138                           ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~2026                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1834                          ; Stuck at GND due to stuck port clock_enable ;
+; Memory:Memory_Instance|Mem_RW:RW_Instance|RW~1962                          ; Stuck at GND due to stuck port clock_enable ;
+; Total Number of Removed Registers = 511                                    ;                                             ;
++----------------------------------------------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1710  ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 8     ;
+; Number of registers using Asynchronous Clear ; 151   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 1679  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------+
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |CPUImplementation|CPU:CPU_Instance|DataPath:DataPath_Instance|PC_uns[7] ;
+; 23:1               ; 7 bits    ; 105 LEs       ; 98 LEs               ; 7 LEs                  ; No         ; |CPUImplementation|CPU:CPU_Instance|DataPath:DataPath_Instance|Mux8      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 258                         ;
+; cycloneiii_ff         ; 1710                        ;
+;     CLR               ; 31                          ;
+;     ENA               ; 1559                        ;
+;     ENA CLR           ; 112                         ;
+;     ENA CLR SLD       ; 8                           ;
+; cycloneiii_lcell_comb ; 1646                        ;
+;     arith             ; 14                          ;
+;         2 data inputs ; 7                           ;
+;         3 data inputs ; 7                           ;
+;     normal            ; 1632                        ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 2                           ;
+;         2 data inputs ; 16                          ;
+;         3 data inputs ; 398                         ;
+;         4 data inputs ; 1215                        ;
+;                       ;                             ;
+; Max LUT depth         ; 8.00                        ;
+; Average LUT depth     ; 5.53                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:04     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
+    Info: Processing started: Thu Nov  9 11:47:42 2023
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CPUImplementation -c CPUImplementation
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file cpuimplementation.vhd
+    Info (12022): Found design unit 1: CPUImplementation-ARCH_CPU_Implementation File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 48
+    Info (12023): Found entity 1: CPUImplementation File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file memory.vhd
+    Info (12022): Found design unit 1: Memory-ARCH_Memory File: C:/Users/koqui/Documents/VHDL/CPU/Memory.vhd Line: 51
+    Info (12023): Found entity 1: Memory File: C:/Users/koqui/Documents/VHDL/CPU/Memory.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file mem_rom.vhd
+    Info (12022): Found design unit 1: Mem_ROM-ARCH_Mem_ROM File: C:/Users/koqui/Documents/VHDL/CPU/Mem_ROM.vhd Line: 13
+    Info (12023): Found entity 1: Mem_ROM File: C:/Users/koqui/Documents/VHDL/CPU/Mem_ROM.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file mem_rw.vhd
+    Info (12022): Found design unit 1: Mem_RW-ARCH_Mem_RW File: C:/Users/koqui/Documents/VHDL/CPU/Mem_RW.vhd Line: 15
+    Info (12023): Found entity 1: Mem_RW File: C:/Users/koqui/Documents/VHDL/CPU/Mem_RW.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file output_ports.vhd
+    Info (12022): Found design unit 1: Output_Ports-ARCH_Output_Ports File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 17
+    Info (12023): Found entity 1: Output_Ports File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file alu.vhd
+    Info (12022): Found design unit 1: ALU-ARCH_ALU File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 14
+    Info (12023): Found entity 1: ALU File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file datapath.vhd
+    Info (12022): Found design unit 1: DataPath-ARCH_DataPath File: C:/Users/koqui/Documents/VHDL/CPU/DataPath.vhd Line: 23
+    Info (12023): Found entity 1: DataPath File: C:/Users/koqui/Documents/VHDL/CPU/DataPath.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file cpu.vhd
+    Info (12022): Found design unit 1: CPU-ARCH_CPU File: C:/Users/koqui/Documents/VHDL/CPU/CPU.vhd Line: 18
+    Info (12023): Found entity 1: CPU File: C:/Users/koqui/Documents/VHDL/CPU/CPU.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file controlunit.vhd
+    Info (12022): Found design unit 1: ControlUnit-arch_controlUnit File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 18
+    Info (12023): Found entity 1: ControlUnit File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 5
+Info (12127): Elaborating entity "CPUImplementation" for the top level hierarchy
+Info (12128): Elaborating entity "CPU" for hierarchy "CPU:CPU_Instance" File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 58
+Info (12128): Elaborating entity "ControlUnit" for hierarchy "CPU:CPU_Instance|ControlUnit:ControlUnit_Instance" File: C:/Users/koqui/Documents/VHDL/CPU/CPU.vhd Line: 29
+Warning (10492): VHDL Process Statement warning at ControlUnit.vhd(171): signal "IR" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 171
+Warning (10492): VHDL Process Statement warning at ControlUnit.vhd(183): signal "IR" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 183
+Warning (10492): VHDL Process Statement warning at ControlUnit.vhd(195): signal "IR" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 195
+Warning (10492): VHDL Process Statement warning at ControlUnit.vhd(207): signal "IR" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 207
+Warning (10492): VHDL Process Statement warning at ControlUnit.vhd(219): signal "IR" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 219
+Warning (10492): VHDL Process Statement warning at ControlUnit.vhd(231): signal "IR" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 231
+Warning (10492): VHDL Process Statement warning at ControlUnit.vhd(243): signal "IR" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 243
+Warning (10492): VHDL Process Statement warning at ControlUnit.vhd(255): signal "IR" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 255
+Warning (10492): VHDL Process Statement warning at ControlUnit.vhd(255): signal "CCR_Result" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 255
+Warning (10492): VHDL Process Statement warning at ControlUnit.vhd(267): signal "IR" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 267
+Warning (10492): VHDL Process Statement warning at ControlUnit.vhd(267): signal "CCR_Result" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 267
+Warning (10631): VHDL Process Statement warning at ControlUnit.vhd(131): inferring latch(es) for signal or variable "IR_Load", which holds its previous value in one or more paths through the process File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Warning (10631): VHDL Process Statement warning at ControlUnit.vhd(131): inferring latch(es) for signal or variable "MAR_Load", which holds its previous value in one or more paths through the process File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Warning (10631): VHDL Process Statement warning at ControlUnit.vhd(131): inferring latch(es) for signal or variable "PC_Load", which holds its previous value in one or more paths through the process File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Warning (10631): VHDL Process Statement warning at ControlUnit.vhd(131): inferring latch(es) for signal or variable "PC_Inc", which holds its previous value in one or more paths through the process File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Warning (10631): VHDL Process Statement warning at ControlUnit.vhd(131): inferring latch(es) for signal or variable "A_Load", which holds its previous value in one or more paths through the process File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Warning (10631): VHDL Process Statement warning at ControlUnit.vhd(131): inferring latch(es) for signal or variable "B_Load", which holds its previous value in one or more paths through the process File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Warning (10631): VHDL Process Statement warning at ControlUnit.vhd(131): inferring latch(es) for signal or variable "ALU_Sel", which holds its previous value in one or more paths through the process File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Warning (10631): VHDL Process Statement warning at ControlUnit.vhd(131): inferring latch(es) for signal or variable "CCR_Load", which holds its previous value in one or more paths through the process File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Warning (10631): VHDL Process Statement warning at ControlUnit.vhd(131): inferring latch(es) for signal or variable "Bus1_Sel", which holds its previous value in one or more paths through the process File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Warning (10631): VHDL Process Statement warning at ControlUnit.vhd(131): inferring latch(es) for signal or variable "Bus2_Sel", which holds its previous value in one or more paths through the process File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Warning (10631): VHDL Process Statement warning at ControlUnit.vhd(131): inferring latch(es) for signal or variable "iwrite", which holds its previous value in one or more paths through the process File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Info (10041): Inferred latch for "iwrite" at ControlUnit.vhd(131) File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Info (10041): Inferred latch for "Bus2_Sel[0]" at ControlUnit.vhd(131) File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Info (10041): Inferred latch for "Bus2_Sel[1]" at ControlUnit.vhd(131) File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Info (10041): Inferred latch for "Bus1_Sel[0]" at ControlUnit.vhd(131) File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Info (10041): Inferred latch for "Bus1_Sel[1]" at ControlUnit.vhd(131) File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Info (10041): Inferred latch for "CCR_Load" at ControlUnit.vhd(131) File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Info (10041): Inferred latch for "ALU_Sel[0]" at ControlUnit.vhd(131) File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Info (10041): Inferred latch for "ALU_Sel[1]" at ControlUnit.vhd(131) File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Info (10041): Inferred latch for "ALU_Sel[2]" at ControlUnit.vhd(131) File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Info (10041): Inferred latch for "B_Load" at ControlUnit.vhd(131) File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Info (10041): Inferred latch for "A_Load" at ControlUnit.vhd(131) File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Info (10041): Inferred latch for "PC_Inc" at ControlUnit.vhd(131) File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Info (10041): Inferred latch for "PC_Load" at ControlUnit.vhd(131) File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Info (10041): Inferred latch for "MAR_Load" at ControlUnit.vhd(131) File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Info (10041): Inferred latch for "IR_Load" at ControlUnit.vhd(131) File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+Info (12128): Elaborating entity "DataPath" for hierarchy "CPU:CPU_Instance|DataPath:DataPath_Instance" File: C:/Users/koqui/Documents/VHDL/CPU/CPU.vhd Line: 49
+Warning (10492): VHDL Process Statement warning at DataPath.vhd(95): signal "PC_uns" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/DataPath.vhd Line: 95
+Info (12128): Elaborating entity "ALU" for hierarchy "CPU:CPU_Instance|DataPath:DataPath_Instance|ALU:ALU_Instance" File: C:/Users/koqui/Documents/VHDL/CPU/DataPath.vhd Line: 135
+Warning (10492): VHDL Process Statement warning at ALU.vhd(27): signal "Sum_uns" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 27
+Warning (10492): VHDL Process Statement warning at ALU.vhd(29): signal "Result_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 29
+Warning (10492): VHDL Process Statement warning at ALU.vhd(32): signal "Sum_uns" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 32
+Warning (10492): VHDL Process Statement warning at ALU.vhd(33): signal "Result_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 33
+Warning (10492): VHDL Process Statement warning at ALU.vhd(36): signal "Result_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 36
+Warning (10492): VHDL Process Statement warning at ALU.vhd(43): signal "Diff_uns" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 43
+Warning (10492): VHDL Process Statement warning at ALU.vhd(45): signal "Result_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 45
+Warning (10492): VHDL Process Statement warning at ALU.vhd(48): signal "Diff_uns" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 48
+Warning (10492): VHDL Process Statement warning at ALU.vhd(49): signal "Result_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 49
+Warning (10492): VHDL Process Statement warning at ALU.vhd(52): signal "Result_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 52
+Warning (10492): VHDL Process Statement warning at ALU.vhd(59): signal "Product_uns" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 59
+Warning (10492): VHDL Process Statement warning at ALU.vhd(61): signal "Result_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 61
+Warning (10492): VHDL Process Statement warning at ALU.vhd(65): signal "Result_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 65
+Warning (10492): VHDL Process Statement warning at ALU.vhd(68): signal "Product_uns" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 68
+Warning (10631): VHDL Process Statement warning at ALU.vhd(21): inferring latch(es) for signal or variable "Sum_uns", which holds its previous value in one or more paths through the process File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Warning (10631): VHDL Process Statement warning at ALU.vhd(21): inferring latch(es) for signal or variable "Diff_uns", which holds its previous value in one or more paths through the process File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Warning (10631): VHDL Process Statement warning at ALU.vhd(21): inferring latch(es) for signal or variable "Product_uns", which holds its previous value in one or more paths through the process File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Product_uns[8]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Product_uns[9]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Product_uns[10]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Product_uns[11]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Product_uns[12]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Product_uns[13]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Product_uns[14]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Product_uns[15]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Diff_uns[0]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Diff_uns[1]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Diff_uns[2]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Diff_uns[3]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Diff_uns[4]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Diff_uns[5]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Diff_uns[6]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Diff_uns[7]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Diff_uns[8]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Sum_uns[0]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Sum_uns[1]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Sum_uns[2]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Sum_uns[3]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Sum_uns[4]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Sum_uns[5]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Sum_uns[6]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Sum_uns[7]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (10041): Inferred latch for "Sum_uns[8]" at ALU.vhd(21) File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (12128): Elaborating entity "Memory" for hierarchy "Memory:Memory_Instance" File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 67
+Info (12128): Elaborating entity "Mem_ROM" for hierarchy "Memory:Memory_Instance|Mem_ROM:ROM_Instance" File: C:/Users/koqui/Documents/VHDL/CPU/Memory.vhd Line: 59
+Info (12128): Elaborating entity "Mem_RW" for hierarchy "Memory:Memory_Instance|Mem_RW:RW_Instance" File: C:/Users/koqui/Documents/VHDL/CPU/Memory.vhd Line: 67
+Info (12128): Elaborating entity "Output_Ports" for hierarchy "Memory:Memory_Instance|Output_Ports:OUT_PORTS_Instance" File: C:/Users/koqui/Documents/VHDL/CPU/Memory.vhd Line: 77
+Warning (10620): VHDL warning at Output_Ports.vhd(138): comparison between unequal length operands always returns FALSE File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 138
+Warning (10631): VHDL Process Statement warning at Output_Ports.vhd(133): inferring latch(es) for signal or variable "port_out_11", which holds its previous value in one or more paths through the process File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 133
+Warning (10620): VHDL warning at Output_Ports.vhd(149): comparison between unequal length operands always returns FALSE File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 149
+Warning (10631): VHDL Process Statement warning at Output_Ports.vhd(144): inferring latch(es) for signal or variable "port_out_12", which holds its previous value in one or more paths through the process File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 144
+Warning (10620): VHDL warning at Output_Ports.vhd(160): comparison between unequal length operands always returns FALSE File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 160
+Warning (10631): VHDL Process Statement warning at Output_Ports.vhd(155): inferring latch(es) for signal or variable "port_out_13", which holds its previous value in one or more paths through the process File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 155
+Warning (10620): VHDL warning at Output_Ports.vhd(171): comparison between unequal length operands always returns FALSE File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 171
+Warning (10631): VHDL Process Statement warning at Output_Ports.vhd(166): inferring latch(es) for signal or variable "port_out_14", which holds its previous value in one or more paths through the process File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 166
+Warning (10620): VHDL warning at Output_Ports.vhd(182): comparison between unequal length operands always returns FALSE File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 182
+Warning (10631): VHDL Process Statement warning at Output_Ports.vhd(177): inferring latch(es) for signal or variable "port_out_15", which holds its previous value in one or more paths through the process File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 177
+Warning (10620): VHDL warning at Output_Ports.vhd(193): comparison between unequal length operands always returns FALSE File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 193
+Warning (10631): VHDL Process Statement warning at Output_Ports.vhd(188): inferring latch(es) for signal or variable "port_out_16", which holds its previous value in one or more paths through the process File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 188
+Info (10041): Inferred latch for "port_out_16[0]" at Output_Ports.vhd(188) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 188
+Info (10041): Inferred latch for "port_out_16[1]" at Output_Ports.vhd(188) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 188
+Info (10041): Inferred latch for "port_out_16[2]" at Output_Ports.vhd(188) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 188
+Info (10041): Inferred latch for "port_out_16[3]" at Output_Ports.vhd(188) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 188
+Info (10041): Inferred latch for "port_out_16[4]" at Output_Ports.vhd(188) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 188
+Info (10041): Inferred latch for "port_out_16[5]" at Output_Ports.vhd(188) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 188
+Info (10041): Inferred latch for "port_out_16[6]" at Output_Ports.vhd(188) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 188
+Info (10041): Inferred latch for "port_out_16[7]" at Output_Ports.vhd(188) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 188
+Info (10041): Inferred latch for "port_out_15[0]" at Output_Ports.vhd(177) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 177
+Info (10041): Inferred latch for "port_out_15[1]" at Output_Ports.vhd(177) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 177
+Info (10041): Inferred latch for "port_out_15[2]" at Output_Ports.vhd(177) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 177
+Info (10041): Inferred latch for "port_out_15[3]" at Output_Ports.vhd(177) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 177
+Info (10041): Inferred latch for "port_out_15[4]" at Output_Ports.vhd(177) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 177
+Info (10041): Inferred latch for "port_out_15[5]" at Output_Ports.vhd(177) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 177
+Info (10041): Inferred latch for "port_out_15[6]" at Output_Ports.vhd(177) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 177
+Info (10041): Inferred latch for "port_out_15[7]" at Output_Ports.vhd(177) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 177
+Info (10041): Inferred latch for "port_out_14[0]" at Output_Ports.vhd(166) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 166
+Info (10041): Inferred latch for "port_out_14[1]" at Output_Ports.vhd(166) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 166
+Info (10041): Inferred latch for "port_out_14[2]" at Output_Ports.vhd(166) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 166
+Info (10041): Inferred latch for "port_out_14[3]" at Output_Ports.vhd(166) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 166
+Info (10041): Inferred latch for "port_out_14[4]" at Output_Ports.vhd(166) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 166
+Info (10041): Inferred latch for "port_out_14[5]" at Output_Ports.vhd(166) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 166
+Info (10041): Inferred latch for "port_out_14[6]" at Output_Ports.vhd(166) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 166
+Info (10041): Inferred latch for "port_out_14[7]" at Output_Ports.vhd(166) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 166
+Info (10041): Inferred latch for "port_out_13[0]" at Output_Ports.vhd(155) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 155
+Info (10041): Inferred latch for "port_out_13[1]" at Output_Ports.vhd(155) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 155
+Info (10041): Inferred latch for "port_out_13[2]" at Output_Ports.vhd(155) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 155
+Info (10041): Inferred latch for "port_out_13[3]" at Output_Ports.vhd(155) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 155
+Info (10041): Inferred latch for "port_out_13[4]" at Output_Ports.vhd(155) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 155
+Info (10041): Inferred latch for "port_out_13[5]" at Output_Ports.vhd(155) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 155
+Info (10041): Inferred latch for "port_out_13[6]" at Output_Ports.vhd(155) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 155
+Info (10041): Inferred latch for "port_out_13[7]" at Output_Ports.vhd(155) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 155
+Info (10041): Inferred latch for "port_out_12[0]" at Output_Ports.vhd(144) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 144
+Info (10041): Inferred latch for "port_out_12[1]" at Output_Ports.vhd(144) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 144
+Info (10041): Inferred latch for "port_out_12[2]" at Output_Ports.vhd(144) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 144
+Info (10041): Inferred latch for "port_out_12[3]" at Output_Ports.vhd(144) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 144
+Info (10041): Inferred latch for "port_out_12[4]" at Output_Ports.vhd(144) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 144
+Info (10041): Inferred latch for "port_out_12[5]" at Output_Ports.vhd(144) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 144
+Info (10041): Inferred latch for "port_out_12[6]" at Output_Ports.vhd(144) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 144
+Info (10041): Inferred latch for "port_out_12[7]" at Output_Ports.vhd(144) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 144
+Info (10041): Inferred latch for "port_out_11[0]" at Output_Ports.vhd(133) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 133
+Info (10041): Inferred latch for "port_out_11[1]" at Output_Ports.vhd(133) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 133
+Info (10041): Inferred latch for "port_out_11[2]" at Output_Ports.vhd(133) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 133
+Info (10041): Inferred latch for "port_out_11[3]" at Output_Ports.vhd(133) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 133
+Info (10041): Inferred latch for "port_out_11[4]" at Output_Ports.vhd(133) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 133
+Info (10041): Inferred latch for "port_out_11[5]" at Output_Ports.vhd(133) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 133
+Info (10041): Inferred latch for "port_out_11[6]" at Output_Ports.vhd(133) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 133
+Info (10041): Inferred latch for "port_out_11[7]" at Output_Ports.vhd(133) File: C:/Users/koqui/Documents/VHDL/CPU/Output_Ports.vhd Line: 133
+Warning (14026): LATCH primitive "CPU:CPU_Instance|DataPath:DataPath_Instance|ALU:ALU_Instance|Sum_uns[1]" is permanently enabled File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Warning (14026): LATCH primitive "CPU:CPU_Instance|DataPath:DataPath_Instance|ALU:ALU_Instance|Sum_uns[2]" is permanently enabled File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Warning (14026): LATCH primitive "CPU:CPU_Instance|DataPath:DataPath_Instance|ALU:ALU_Instance|Sum_uns[3]" is permanently enabled File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Warning (14026): LATCH primitive "CPU:CPU_Instance|DataPath:DataPath_Instance|ALU:ALU_Instance|Sum_uns[4]" is permanently enabled File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Warning (14026): LATCH primitive "CPU:CPU_Instance|DataPath:DataPath_Instance|ALU:ALU_Instance|Sum_uns[5]" is permanently enabled File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Warning (14026): LATCH primitive "CPU:CPU_Instance|DataPath:DataPath_Instance|ALU:ALU_Instance|Sum_uns[6]" is permanently enabled File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Warning (14026): LATCH primitive "CPU:CPU_Instance|DataPath:DataPath_Instance|ALU:ALU_Instance|Sum_uns[7]" is permanently enabled File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Warning (14026): LATCH primitive "CPU:CPU_Instance|DataPath:DataPath_Instance|ALU:ALU_Instance|Sum_uns[0]" is permanently enabled File: C:/Users/koqui/Documents/VHDL/CPU/ALU.vhd Line: 21
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "Memory:Memory_Instance|Mem_RW:RW_Instance|RW" is uninferred due to asynchronous read logic File: C:/Users/koqui/Documents/VHDL/CPU/Mem_RW.vhd Line: 18
+Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
+    Info (13026): Duplicate LATCH primitive "CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|iwrite" merged with LATCH primitive "CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|Bus1_Sel[0]" File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 12
+Warning (13012): Latch CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|Bus2_Sel[0] has unsafe behavior File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 131
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|current_state.S_DECODE_3 File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 40
+Warning (13012): Latch CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|PC_Inc has unsafe behavior File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 12
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|current_state.S_DECODE_3 File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 40
+Warning (13012): Latch CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|MAR_Load has unsafe behavior File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 12
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal CPU:CPU_Instance|ControlUnit:ControlUnit_Instance|current_state.S_DECODE_3 File: C:/Users/koqui/Documents/VHDL/CPU/ControlUnit.vhd Line: 40
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "port_out_11[0]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 38
+    Warning (13410): Pin "port_out_11[1]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 38
+    Warning (13410): Pin "port_out_11[2]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 38
+    Warning (13410): Pin "port_out_11[3]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 38
+    Warning (13410): Pin "port_out_11[4]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 38
+    Warning (13410): Pin "port_out_11[5]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 38
+    Warning (13410): Pin "port_out_11[6]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 38
+    Warning (13410): Pin "port_out_11[7]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 38
+    Warning (13410): Pin "port_out_12[0]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 39
+    Warning (13410): Pin "port_out_12[1]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 39
+    Warning (13410): Pin "port_out_12[2]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 39
+    Warning (13410): Pin "port_out_12[3]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 39
+    Warning (13410): Pin "port_out_12[4]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 39
+    Warning (13410): Pin "port_out_12[5]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 39
+    Warning (13410): Pin "port_out_12[6]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 39
+    Warning (13410): Pin "port_out_12[7]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 39
+    Warning (13410): Pin "port_out_13[0]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 40
+    Warning (13410): Pin "port_out_13[1]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 40
+    Warning (13410): Pin "port_out_13[2]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 40
+    Warning (13410): Pin "port_out_13[3]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 40
+    Warning (13410): Pin "port_out_13[4]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 40
+    Warning (13410): Pin "port_out_13[5]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 40
+    Warning (13410): Pin "port_out_13[6]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 40
+    Warning (13410): Pin "port_out_13[7]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 40
+    Warning (13410): Pin "port_out_14[0]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 41
+    Warning (13410): Pin "port_out_14[1]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 41
+    Warning (13410): Pin "port_out_14[2]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 41
+    Warning (13410): Pin "port_out_14[3]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 41
+    Warning (13410): Pin "port_out_14[4]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 41
+    Warning (13410): Pin "port_out_14[5]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 41
+    Warning (13410): Pin "port_out_14[6]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 41
+    Warning (13410): Pin "port_out_14[7]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 41
+    Warning (13410): Pin "port_out_15[0]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 42
+    Warning (13410): Pin "port_out_15[1]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 42
+    Warning (13410): Pin "port_out_15[2]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 42
+    Warning (13410): Pin "port_out_15[3]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 42
+    Warning (13410): Pin "port_out_15[4]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 42
+    Warning (13410): Pin "port_out_15[5]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 42
+    Warning (13410): Pin "port_out_15[6]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 42
+    Warning (13410): Pin "port_out_15[7]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 42
+    Warning (13410): Pin "port_out_16[0]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 43
+    Warning (13410): Pin "port_out_16[1]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 43
+    Warning (13410): Pin "port_out_16[2]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 43
+    Warning (13410): Pin "port_out_16[3]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 43
+    Warning (13410): Pin "port_out_16[4]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 43
+    Warning (13410): Pin "port_out_16[5]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 43
+    Warning (13410): Pin "port_out_16[6]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 43
+    Warning (13410): Pin "port_out_16[7]" is stuck at GND File: C:/Users/koqui/Documents/VHDL/CPU/CPUImplementation.vhd Line: 43
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 5 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 3577 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 130 input pins
+    Info (21059): Implemented 128 output pins
+    Info (21061): Implemented 3319 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 116 warnings
+    Info: Peak virtual memory: 4834 megabytes
+    Info: Processing ended: Thu Nov  9 11:47:58 2023
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:07
+
+

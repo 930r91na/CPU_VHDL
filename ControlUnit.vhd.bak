@@ -1,0 +1,22 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity ControlUnit is
+    port (
+		--INPUT
+        clk, rst : in STD_LOGIC_VECTOR;
+        IR : in STD_LOGIC_VECTOR(7 downto 0);
+		  CCR_Result : in STD_LOGIC_VECTOR(3 downto 0);
+		 -- Outputs
+        iwrite, IR_Load, MAR_Load, PC_Load, PC_Inc, A_Load, B_Load, CCR_Load: out std_logic;
+		  ALU_Sel: out std_logic (2 downto 0);
+		  Bus1_Sel, Bus2_Sel: out std_logic_vector(1 downto 0);
+    );
+end ControlUnit;
+
+architecture arch_controlUnit of ControlUnit is 
+
+begin
+
+end arch_ControlUnit;
